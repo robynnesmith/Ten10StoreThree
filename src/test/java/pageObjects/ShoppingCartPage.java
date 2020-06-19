@@ -26,7 +26,7 @@ public class ShoppingCartPage extends BasePage {
     private static final By DELETE_FROM_CART_BUTTON = By.cssSelector(".remove-from-cart");
     private static final By NO_ITEMS_MESSAGE = By.cssSelector(".no-items");
     private static final By QUANTITY_UP_BUTTON = By.cssSelector(".material-icons.touchspin-up");
-    private static final By QUANTITY_INPUT = By.cssSelector(".js-cart-line-product-quantity.form-control");
+    private static final By QUANTITY_INPUT = By.cssSelector("js-cart-line-product-quantity.form-control");
     private static final By QUANTITY_INPUT_VALUE_2 = By.cssSelector("input[value'2']");
     private static final By PRODUCT_QUANTITY_TEXT = By.cssSelector("#cart-subtotal-products span:first-child");
     private static final By PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".checkout a");
@@ -98,6 +98,14 @@ public class ShoppingCartPage extends BasePage {
 
     public void clickModalProceedToCheckout() {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
+    }
+
+    public void checkThereAreTwoItems(){
+        checkTextExistsOnPage("2 items");
+    }
+
+    public void checkThatBasketLogoHasTwo(){
+        checkTextExistsInElement("a", "(2)");
     }
 }
 

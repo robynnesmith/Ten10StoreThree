@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Created by jack.forman on 22/10/2016.
@@ -22,10 +21,17 @@ public class HomePage extends BasePage {
     private static final By SIGN_IN_BUTTON = By.cssSelector("#_desktop_user_info a");
     private static final By BLOUSE_IMAGE = By.cssSelector("img[alt = 'Blouse'");
     private static final By QUICK_VIEW_LINK = By.cssSelector(".quick-view");
-    private static final By FIRST_PRODUCT_IMAGE = By.cssSelector("div.products > article:first-child img");
-    private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:first-child .quick-view");
+    private static final By LAST_PRODUCT_IMAGE = By.cssSelector("div.products > article:nth-child(7) img");
+    private static final By LAST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:nth-child(7) .quick-view");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_WINDOW = By.cssSelector("#myModalLabel");
+    private static final By WOMENS_BUTTON = By.cssSelector(".dropdown-item:first-of-type");
+    private static final By EMAIL_INPUT = By.name("email");
+    private static final By SUBSCRIBE_BUTTON = By.name("submitNewsletter");
+    private static final By CONTACT_US_BUTTON = By.linkText("Contact us");
+    private static final By CONTACT_US_EMAIL = By.name("from");
+    private static final By MESSAGE_FROM = By.name("message");
+    private static final By SEND_MESSAGE = By.name("submitMessage");
 
     public void goTo() {
         driver.get(URL);
@@ -34,6 +40,8 @@ public class HomePage extends BasePage {
     public void navigateToSignInPage() {
         waitAndClick(SIGN_IN_BUTTON);
     }
+
+    public void clickWomens(){ waitAndClick(WOMENS_BUTTON);}
 
     public void hoverOverItem() {
 
@@ -53,8 +61,8 @@ public class HomePage extends BasePage {
     }
 
     public void addItemToCart() {
-        WebElement firstProductImage = driver.findElement(FIRST_PRODUCT_IMAGE);
-        WebElement firstProductQuickView = driver.findElement(FIRST_PRODUCT_QUICKVIEW);
+        WebElement firstProductImage = driver.findElement(LAST_PRODUCT_IMAGE);
+        WebElement firstProductQuickView = driver.findElement(LAST_PRODUCT_QUICKVIEW);
         actions
                 .moveToElement(firstProductImage)
                 .click(firstProductQuickView)
@@ -74,4 +82,37 @@ public class HomePage extends BasePage {
         addItemToCart();
         addedToCart();
     }
+
+    public void inputEmailToNews(String input){
+        findAndType(EMAIL_INPUT, input);
+    }
+
+    public void clickSubscribe(){
+        waitAndClick(SUBSCRIBE_BUTTON);
+    }
+
+    public void validateSubscribed(){
+        checkTextExistsInElement("main", "You have successfully subscribed to this newsletter.");
+    }
+
+    public void clickContactUs(){
+        waitAndClick(CONTACT_US_BUTTON);
+    }
+
+    public void enterEmailAddressFrom(String input){
+        findAndType(CONTACT_US_EMAIL, input);
+    }
+
+    public void enterMessageFrom(String input){
+        findAndType(MESSAGE_FROM, input);
+    }
+
+    public void clickSendMessage(){
+        waitAndClick(SEND_MESSAGE);
+    }
+
+    public void validateMessageSent(){
+        checkTextExistsInElement("section", "Your message has been successfully sent to our team.");
+    }
+
 }

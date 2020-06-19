@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
@@ -47,11 +48,18 @@ abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
 
-    void waitUntilInvisible(By selector){
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(selector));
-    }
+    void waitUntilInvisible(By selector){ wait.until(ExpectedConditions.invisibilityOfElementLocated(selector)); }
 
     public PersonalDetails getPersonalDetails() {
         return pd;
+    }
+
+    void checkTextExistsInElement(String tagName, String inputText){
+        Assert.assertTrue(driver.findElement(By.tagName(String.valueOf(tagName))).getText().contains(inputText));
+
+    }
+
+    void checkTextExistsOnPage(String input){
+        Assert.assertTrue(driver.getPageSource().contains(input));
     }
 }
