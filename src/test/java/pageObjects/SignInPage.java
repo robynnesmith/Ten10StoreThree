@@ -19,6 +19,7 @@ public class SignInPage extends BasePage {
     }
 
     private PersonalDetails pd = getPersonalDetails();
+    private PersonalDetails pd2 = getPersonalDetails();
     private WebDriverWait wait = new WebDriverWait(driver, 10);
 
     private static final By EMAIL_ADDRESS_INPUT_BOX = By.cssSelector("input#email_create");
@@ -102,6 +103,9 @@ public class SignInPage extends BasePage {
         clickLogIn();
         successfulSignIn();
     }
+
+
+
 
     public void invalidLogin() {
         enterSignInEmailAddress(pd.getInvalidEmail());

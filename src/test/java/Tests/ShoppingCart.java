@@ -1,9 +1,12 @@
 package Tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import pageObjects.*;
+
+import javax.security.auth.callback.CallbackHandler;
 
 import static Tests.TestSuite.driverFactory;
 
@@ -24,6 +27,7 @@ public class ShoppingCart {
     public void individualSetUp() {
         driver.manage().deleteAllCookies();
         homePage.goTo();
+
     }
 
     /**
@@ -36,7 +40,9 @@ public class ShoppingCart {
      */
     @Test
     public void removeItemFromShoppingBasket() {
-
+        homePage.navigateToSignInPage();
+        signInPage.login();
+        homePage.goTo();
         homePage.itemAddedToCart();
         basketpage.navigateToBasket();
         basketpage.deleteItemFromBasket();
@@ -55,6 +61,9 @@ public class ShoppingCart {
      */
     @Test
     public void increaseQuantityOfProductInBasket() {
+        homePage.navigateToSignInPage();
+        signInPage.login();
+        homePage.goTo();
         homePage.itemAddedToCart();
         basketpage.navigateToBasket();
         basketpage.increaseQuantity();
@@ -112,6 +121,116 @@ public class ShoppingCart {
         checkoutPage.confirmOrder();
         checkoutPage.orderConfirmationDisplayed();
     }
+
+    //New test cases
+
+//Make invoice address different to delivery address
+    /**
+
+     .Navigate to basket
+     .Click proceed to checkout
+     .Delivery Address Page is shown
+     .Make invoice address different
+     .Click continue button
+     .Verify shipping method displayed
+     */
+    @Test @Ignore
+    public void invoiceAddressDifferentToDeliveryAddress() {
+        homePage.navigateToSignInPage();
+        signInPage.login();
+        homePage.goTo();
+        homePage.addItemToCart();
+        basketpage.navigateToBasket();
+        basketpage.clickProceedToCheckout();
+        checkoutPage.deliveryAddressSectionDisplayed();
+        checkoutPage.clickDifferentBillingAddress();
+        checkoutPage.selectSecondAddress();
+        checkoutPage.clickProceedToNextSection();
+        checkoutPage.shippingPageDisplayed();
+        checkoutPage.clickAddressSection();
+        checkoutPage.isSecondAddressSelected();
+        checkoutPage.selectFirstAddress();
+        checkoutPage.checkOutAddress();
+    }
+
+    //Multiple items in shopping cart displayed correctly
+    /**
+     *Navigate to basket
+     *Verify that all items are displayed
+     *Verify that product counter and prices are correct
+     */
+    @Test @Ignore
+    public void verifyMultipleItemsInCart() {
+
+    }
+
+    //Add a comment to your order
+    /**
+     * Navigate to basket
+     * Proceed to checkout
+     * Select Address
+     * Write a comment in 'Shipping Method' section
+     * Verify comment has been added
+     */
+    @Test
+    public void addCommentToOrder() { /**No way to verify added comment after ordering*/
+
+        homePage.navigateToSignInPage();
+        signInPage.login();
+        homePage.goTo();
+        homePage.addItemToCart();
+        basketpage.navigateToBasket();
+        basketpage.clickProceedToCheckout();
+        checkoutPage.deliveryAddressSectionDisplayed();
+        checkoutPage.clickProceedToNextSection();
+        checkoutPage.shippingPageDisplayed();
+        checkoutPage.enterShippingComment();
+        checkoutPage.clickProceedToNextSection();
+        checkoutPage.clickShippingSection();
+        checkoutPage.verifyCommentAdded();
+
+
+
+    }
+
+//Proceed to checkout and logout
+    /**
+     *Navigate to basket
+     *Click proceed to checkout
+     *Logout
+     *Verify cart emptied when sign back in.
+     */
+    @Test
+    public void checkOutandlogout() {
+
+    }
+
+//Add new address
+    /**
+     *Navigate to basket
+     *Proceed to checkout
+     *Click "+ new address"
+     *Fill out address form
+     *Verify new address is created
+     */
+    @Test
+    public void addnewAddress() {
+        homePage.navigateToSignInPage();
+        signInPage.login();
+        homePage.goTo();
+        homePage.addItemToCart();
+        basketpage.navigateToBasket();
+        basketpage.clickProceedToCheckout();
+        checkoutPage.addNewAddress();
+        checkoutPage.clickAddressSection();
+        checkoutPage.checkOutAddress();
+        checkoutPage.clickAddressSection();
+        checkoutPage.verifyAddress();
+        checkoutPage.deleteCreatedAddress();
+
+    }
+
+
 
 
 }

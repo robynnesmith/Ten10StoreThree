@@ -17,6 +17,7 @@ abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     private PersonalDetails pd = new PersonalDetails("Robin", "Hood", "test@sherwood.com", "ghsjdc@test.com", "LadyM", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
+    //private PersonalDetails pd2 = new PersonalDetails("Robin", "Hood", "antony@gmail.com", "ghsjdc@test.com", "12345", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
 
 
     BasePage(WebDriver driver) {
@@ -54,4 +55,6 @@ abstract class BasePage {
     public PersonalDetails getPersonalDetails() {
         return pd;
     }
+
+
 }

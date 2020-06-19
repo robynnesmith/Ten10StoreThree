@@ -23,6 +23,8 @@ public class HomePage extends BasePage {
     private static final By BLOUSE_IMAGE = By.cssSelector("img[alt = 'Blouse'");
     private static final By QUICK_VIEW_LINK = By.cssSelector(".quick-view");
     private static final By FIRST_PRODUCT_IMAGE = By.cssSelector("div.products > article:first-child img");
+    private static final By SEVENTH_PRODUCT_IMAGE = By.cssSelector("div.products > article:nth-child(7) img");
+    private static final By SEVENTH_PRODUCT_QUICKVIEW = By.xpath("//img[@alt='Printed Chiffon Dress']");
     private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:first-child .quick-view");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_WINDOW = By.cssSelector("#myModalLabel");
@@ -53,8 +55,8 @@ public class HomePage extends BasePage {
     }
 
     public void addItemToCart() {
-        WebElement firstProductImage = driver.findElement(FIRST_PRODUCT_IMAGE);
-        WebElement firstProductQuickView = driver.findElement(FIRST_PRODUCT_QUICKVIEW);
+        WebElement firstProductImage = driver.findElement(SEVENTH_PRODUCT_IMAGE);
+        WebElement firstProductQuickView = driver.findElement(SEVENTH_PRODUCT_QUICKVIEW);
         actions
                 .moveToElement(firstProductImage)
                 .click(firstProductQuickView)
