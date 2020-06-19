@@ -1,11 +1,9 @@
 package pageObjects;
 
-import org.apache.http.impl.conn.DefaultRoutePlanner;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage extends BasePage {
@@ -15,7 +13,7 @@ public class ProductPage extends BasePage {
     }
 
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
-    private static final By BLOUSE_IMAGE = By.cssSelector("img[alt = 'Blouse'");
+    private static final By PRINTED_DRESS_IMAGE = By.cssSelector("img[alt = 'Printed Dress'");
     private static final By QUANTITY_UP_BUTTON = By.cssSelector(".material-icons.touchspin-up");
     private static final By SIZE_DROPDWON = By.cssSelector("#group_1");
     private static final By WHITE_COLOUR_OPTION = By.cssSelector("input[value = '8']");
@@ -26,7 +24,7 @@ public class ProductPage extends BasePage {
     }
 
     public void navigatetoProductPage() {
-        waitAndClick(BLOUSE_IMAGE);
+        waitAndClick(PRINTED_DRESS_IMAGE);
     }
 
     public void selectQuantity() {

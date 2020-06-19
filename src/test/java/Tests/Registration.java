@@ -71,6 +71,39 @@ public class Registration {
         createNewAccountPage.clickSave();
     }
 
+    /**
+     * Navigate to registration page
+     * Enter numeric values into name field
+     * Valid details into other fields
+     * Verify error message is displayed
+     */
+    @Test
+    public void registerUsingNumericNameValues() {
+        homepage.navigateToSignInPage();
+        signInPage.clickCreateAnAccount();
+        createNewAccountPage.enterNumericNameDetails();
+        createNewAccountPage.clickSave();
+        createNewAccountPage.checkInvalidName();
+    }
+
+    @Test
+    public void registerUsingNumericPassword() {
+        homepage.navigateToSignInPage();
+        signInPage.clickCreateAnAccount();
+        createNewAccountPage.enterNumericPassword();
+        createNewAccountPage.clickSave();
+        signInPage.successfulSignIn();
+    }
+
+    @Test
+    public void registerUsingInvalidBirthdate(){
+        homepage.navigateToSignInPage();
+        signInPage.clickCreateAnAccount();
+        createNewAccountPage.enterPersonalDetails();
+        createNewAccountPage.typeIncorrectBirthdateValue();
+        createNewAccountPage.clickSave();
+        createNewAccountPage.InvalidBirthdateErrorMessageShown();
+    }
 
     @After
     public void individualTearDown() {
