@@ -234,15 +234,15 @@ public class SignInPage extends BasePage {
 
     }
 
-    public void ClickOrderHistory(){
-     WebElement OrderHistories = driver.findElement(ORDERS_LOGIN_BUTTON);
+    public void ClickOrderHistory() {
+        WebElement OrderHistories = driver.findElement(ORDERS_LOGIN_BUTTON);
         actions
                 .moveToElement(OrderHistories)
                 .click(OrderHistories)
                 .perform();
     }
 
-    public void ClickOrderDetails(){
+    public void ClickOrderDetails() {
         WebElement OrderDetails = driver.findElement(ORDER_DETAILS_LINK);
         actions
                 .moveToElement(OrderDetails)
@@ -250,7 +250,7 @@ public class SignInPage extends BasePage {
                 .perform();
     }
 
-    public void clickProductType(){
+    public void clickProductType() {
         WebElement productDropDown = driver.findElement(CLICK_LOGGED_IN_TYPE);
         actions
                 .moveToElement(productDropDown)
@@ -260,10 +260,11 @@ public class SignInPage extends BasePage {
         dropDownPick.selectByVisibleText("Printed Dress - Size : S- Color : Orange");
     }
 
-    public void inputMessage(){
-        findAndType(ORDER_MESSAGE,"Take from the Rich, give to the poor");
+    public void inputMessage() {
+        findAndType(ORDER_MESSAGE, "Take from the Rich, give to the poor");
     }
-    public void checkMessageSent(){
+
+    public void checkMessageSent() {
         WebElement MessageOutbox = driver.findElement(SEND_BUTTON);
         actions
                 .moveToElement(MessageOutbox)
@@ -273,7 +274,7 @@ public class SignInPage extends BasePage {
         assertTrue(elementIsVisible(isMessageSentCheck));
     }
 
-    public void invalidUserPasswordReset(){
+    public void invalidUserPasswordReset() {
         forgottenPassword();
         enterSignInEmailAddress(pd.getInvalidEmail());
         clickRetrievePassword();
