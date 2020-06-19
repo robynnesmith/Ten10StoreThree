@@ -58,6 +58,7 @@ public class SignInPage extends BasePage {
     private static final By SEND_CHECK = By.cssSelector("article.alert.alert-success");
     private static final By RETRIEVE_PASSWORD_CHECK = By.cssSelector("li > p");
 
+    private static final By ORDER_HISTORY_BUTTON = By.linkText("Orders");
 
     public void enterCreateNewAccountEmailAddress(String emailAddress) {
         findAndType(EMAIL_ADDRESS_INPUT_BOX, emailAddress);
@@ -75,6 +76,8 @@ public class SignInPage extends BasePage {
     public void enterPassword() {
         findAndType(PASSWORD_INPUT, pd.getPassword());
     }
+
+    public void enterInputPassword(String input){ findAndType(PASSWORD_INPUT, input);}
 
     public void successfulSignIn() {
         waitUntilVisible(SIGN_OUT_BUTTON);
@@ -105,6 +108,8 @@ public class SignInPage extends BasePage {
     public void clickRetrievePassword() {
         waitAndClick(SEND_RESET_LINK_BUTTON);
     }
+
+    public void clickOrderHistory(){ waitAndClick(ORDER_HISTORY_BUTTON);}
 
     public void confirmationMessage() {
         WebElement alertBox = driver.findElement(NOTIFICATION_MESSAGE);
