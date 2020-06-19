@@ -19,7 +19,7 @@ public class ShoppingCartPage extends BasePage {
 
     public HomePage homePage = new HomePage(driver);
 
-    private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
+    private static final By ADD_TO_CART_BUTTON = By.cssSelector("[data-button-action ='add-to-cart']");
     private static final By MODAL_CLOSE = By.cssSelector(".close");
     private static final By MODAL_BODY = By.cssSelector(".modal-body");
     private static final By CART_BUTTON = By.id("_desktop_cart");
