@@ -129,13 +129,13 @@ public class SignIn {
         signInPage.confirmInvalidPassword();
     }
 
-    /*
+    /**
      Pre-Conditions
       *have existing account and be logged in
      Steps
       *navigate to account page and to addresses section
       *add a new address and enter details into 'alias' and 'company' fields
-      *verify new address has been added"-
+      *verify new address has been added
     */
     @Test
     public void NewAddressLogIn(){
