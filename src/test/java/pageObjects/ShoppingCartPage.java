@@ -19,7 +19,7 @@ public class ShoppingCartPage extends BasePage {
 
     public HomePage homePage = new HomePage(driver);
 
-    private static final By ADD_TO_CART_BUTTON = By.cssSelector("[data-button-action ='add-to-cart']");
+    private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_CLOSE = By.cssSelector(".close");
     private static final By MODAL_BODY = By.cssSelector(".modal-body");
     private static final By CART_BUTTON = By.id("_desktop_cart");
@@ -63,7 +63,7 @@ public class ShoppingCartPage extends BasePage {
         boolean textPresent = false;
         int count = 0;
         while (!textPresent && count < 20){
-            String text = driver.findElement(PRODUCT_QUANTITY_TEXT1).getText();
+            String text = driver.findElement(PRODUCT_QUANTITY_TEXT).getText();
             if (text.equals("2 items")){
                 textPresent = true;
             }
@@ -75,7 +75,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void verifyProductCountUpdated() {
-        WebElement productUpdated = driver.findElement(PRODUCT_QUANTITY_TEXT1);
+        WebElement productUpdated = driver.findElement(PRODUCT_QUANTITY_TEXT);
         String updatedProduct = productUpdated.getText();
         Assert.assertEquals("2 items", updatedProduct);
     }
@@ -90,6 +90,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
 
+
     public void addItemToCart() {
         homePage.itemAddedToCart();
         navigateToBasket();
@@ -100,6 +101,12 @@ public class ShoppingCartPage extends BasePage {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
     }
 
+    public void checkThereAreTwoItems(){
+        checkTextExistsOnPage("2 items");
+    }
 
+    public void checkThatBasketLogoHasTwo(){
+        checkTextExistsInElement("a", "(2)");
+    }
 }
 

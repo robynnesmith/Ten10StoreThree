@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,6 @@ abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     private PersonalDetails pd = new PersonalDetails("Robin", "Hood", "test@sherwood.com", "ghsjdc@test.com", "LadyM", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
-    //private PersonalDetails pd2 = new PersonalDetails("Robin", "Hood", "antony@gmail.com", "ghsjdc@test.com", "12345", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
 
 
     BasePage(WebDriver driver) {
@@ -56,5 +56,12 @@ abstract class BasePage {
         return pd;
     }
 
+    void checkTextExistsInElement(String tagName, String inputText){
+        Assert.assertTrue(driver.findElement(By.tagName(String.valueOf(tagName))).getText().contains(inputText));
 
+    }
+
+    void checkTextExistsOnPage(String input){
+        Assert.assertTrue(driver.getPageSource().contains(input));
+    }
 }
