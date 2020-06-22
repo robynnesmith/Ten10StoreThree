@@ -68,12 +68,11 @@ public class BuyJourney {
      */
     @Test
     public void addProductToCartFromProductPage() {
-
         productPage.navigatetoProductPage();
         productPage.selectQuantity();
         productPage.selectSize();
         productPage.selectColour();
-        basketpage.addToCart();
+        basketpage.addItemToCart();
         homepage.addedToCart();
 
     }
