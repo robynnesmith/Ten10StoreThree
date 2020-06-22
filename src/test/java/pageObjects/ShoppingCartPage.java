@@ -29,6 +29,7 @@ public class ShoppingCartPage extends BasePage {
     private static final By QUANTITY_INPUT = By.cssSelector(".js-cart-line-product-quantity.form-control");
     private static final By QUANTITY_INPUT_VALUE_2 = By.cssSelector("input[value'2']");
     private static final By PRODUCT_QUANTITY_TEXT = By.cssSelector("#cart-subtotal-products span:first-child");
+    private static final By PRODUCT_QUANTITY_TEXT1 = By.xpath("//div[@id='cart-subtotal-products']/span");
     private static final By PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".checkout a");
     private static final By PERSONAL_INFORMATION_PAGE = By.id("checkout-personal-information-step");
     private static final By MODAL_PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".cart-content-btn>a");
@@ -62,7 +63,7 @@ public class ShoppingCartPage extends BasePage {
         boolean textPresent = false;
         int count = 0;
         while (!textPresent && count < 20){
-            String text = driver.findElement(PRODUCT_QUANTITY_TEXT).getText();
+            String text = driver.findElement(PRODUCT_QUANTITY_TEXT1).getText();
             if (text.equals("2 items")){
                 textPresent = true;
             }
@@ -74,7 +75,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void verifyProductCountUpdated() {
-        WebElement productUpdated = driver.findElement(PRODUCT_QUANTITY_TEXT);
+        WebElement productUpdated = driver.findElement(PRODUCT_QUANTITY_TEXT1);
         String updatedProduct = productUpdated.getText();
         Assert.assertEquals("2 items", updatedProduct);
     }
@@ -89,7 +90,6 @@ public class ShoppingCartPage extends BasePage {
     }
 
 
-
     public void addItemToCart() {
         homePage.itemAddedToCart();
         navigateToBasket();
@@ -99,5 +99,7 @@ public class ShoppingCartPage extends BasePage {
     public void clickModalProceedToCheckout() {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
     }
+
+
 }
 

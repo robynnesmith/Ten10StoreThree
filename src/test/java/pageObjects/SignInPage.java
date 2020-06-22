@@ -21,6 +21,7 @@ public class SignInPage extends BasePage {
     }
 
     private PersonalDetails pd = getPersonalDetails();
+    private PersonalDetails pd2 = getPersonalDetails();
     private WebDriverWait wait = new WebDriverWait(driver, 10);
     private Actions actions = new Actions(driver);
 
@@ -128,6 +129,9 @@ public class SignInPage extends BasePage {
         clickLogIn();
         successfulSignIn();
     }
+
+
+
 
     public void invalidLogin() {
         enterSignInEmailAddress(pd.getInvalidEmail());

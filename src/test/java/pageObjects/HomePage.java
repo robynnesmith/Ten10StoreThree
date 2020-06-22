@@ -22,6 +22,8 @@ public class HomePage extends BasePage {
     private static final By SIGN_IN_BUTTON = By.cssSelector("#_desktop_user_info a");
     private static final By BLOUSE_IMAGE = By.cssSelector("img[alt = 'Blouse'");
     private static final By QUICK_VIEW_LINK = By.cssSelector(".quick-view");
+    private static final By SEVENTH_PRODUCT_IMAGE = By.cssSelector("div.products > article:nth-child(7) img");
+    private static final By SEVENTH_PRODUCT_QUICKVIEW = By.xpath("//img[@alt='Printed Chiffon Dress']");
     private static final By FIRST_PRODUCT_IMAGE = By.cssSelector("div.products > article:nth-child(3) img");
     private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:nth-child(3) .quick-view");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
