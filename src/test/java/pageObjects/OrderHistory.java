@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class OrderHistory extends BasePage{
-    public OrderHistory (WebDriver driver) {
-        super(driver);
-    }
 
     private static final By DETAILS_BUTTON = By.linkText("Details");
     private static final By SELECT_PROUCT = By.name("id_product");

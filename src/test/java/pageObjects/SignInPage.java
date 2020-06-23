@@ -16,10 +16,6 @@ import static org.junit.Assert.assertTrue;
  */
 public class SignInPage extends BasePage {
 
-    public SignInPage(WebDriver driver) {
-        super(driver);
-    }
-
     private PersonalDetails pd = getPersonalDetails();
     private PersonalDetails pd2 = getPersonalDetails();
     private WebDriverWait wait = new WebDriverWait(driver, 10);

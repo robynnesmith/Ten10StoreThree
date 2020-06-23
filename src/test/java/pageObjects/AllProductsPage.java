@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AllProductsPage extends BasePage {
-    public AllProductsPage (WebDriver driver) {
-        super(driver);
-    }
 
     private static final By DRESSES = By.linkText("Dresses");
     private static final By CHOOSE_SIZE = By.xpath("/html/body/main/section/div/div[1]/div[2]/div[2]/section[2]/ul/li[2]/label/span/span");

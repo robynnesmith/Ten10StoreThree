@@ -8,9 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage extends BasePage {
 
-    public ProductPage (WebDriver driver) {
-        super(driver);
-    }
 
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By PRINTED_DRESS_IMAGE = By.cssSelector("img[alt = 'Printed Dress'");

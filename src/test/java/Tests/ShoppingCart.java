@@ -15,17 +15,16 @@ import static Tests.TestSuite.driverFactory;
  */
 public class ShoppingCart {
 
-    public static WebDriver driver = driverFactory.getDriver();
-    private HomePage homePage = new HomePage(driver);
-    private ShoppingCartPage basketpage = new ShoppingCartPage(driver);
-    private SignInPage signInPage = new SignInPage(driver);
-    private ProductPage productPage = new ProductPage(driver);
-    private CheckoutPage checkoutPage = new CheckoutPage(driver);
+    private HomePage homePage = new HomePage();
+    private ShoppingCartPage basketpage = new ShoppingCartPage();
+    private SignInPage signInPage = new SignInPage();
+    private ProductPage productPage = new ProductPage();
+    private CheckoutPage checkoutPage = new CheckoutPage();
 
 
     @Before
     public void individualSetUp() {
-        driver.manage().deleteAllCookies();
+        homePage.clearCookies();
         homePage.goTo();
 
     }

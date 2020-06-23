@@ -1,5 +1,6 @@
 package pageObjects;
 
+import config.DriverFactory;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -20,8 +21,8 @@ abstract class BasePage {
     private PersonalDetails pd = new PersonalDetails("Robin", "Hood", "test@sherwood.com", "ghsjdc@test.com", "LadyM", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
 
 
-    BasePage(WebDriver driver) {
-        this.driver = driver;
+    BasePage() {
+        driver = DriverFactory.getDriver();
         this.wait = new WebDriverWait(driver, 20);
     }
 
@@ -63,5 +64,9 @@ abstract class BasePage {
 
     void checkTextExistsOnPage(String input){
         Assert.assertTrue(driver.getPageSource().contains(input));
+    }
+
+    public void clearCookies(){
+        driver.manage().deleteAllCookies();
     }
 }

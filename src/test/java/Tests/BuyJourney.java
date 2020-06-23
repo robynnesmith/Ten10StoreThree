@@ -16,16 +16,15 @@ import static java.lang.Thread.sleep;
  */
 public class BuyJourney {
 
-    public static WebDriver driver = driverFactory.getDriver();
-    private HomePage homepage = new HomePage(driver);
-    private ShoppingCartPage basketpage = new ShoppingCartPage(driver);
-    private SignInPage signInPage = new SignInPage(driver);
-    private ProductPage productPage = new ProductPage(driver);
-    private OrderHistory orderHistory = new OrderHistory(driver);
-    private AllProductsPage allProductsPage = new AllProductsPage(driver);
+    private HomePage homepage = new HomePage();
+    private ShoppingCartPage basketpage = new ShoppingCartPage();
+    private SignInPage signInPage = new SignInPage();
+    private ProductPage productPage = new ProductPage();
+    private OrderHistory orderHistory = new OrderHistory();
+    private AllProductsPage allProductsPage = new AllProductsPage();
     @Before
     public void individualSetUp() {
-        driver.manage().deleteAllCookies();
+        homepage.clearCookies();
         homepage.goTo();
         homepage.maximiseBrowserWindow();
     }

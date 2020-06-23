@@ -23,11 +23,6 @@ public class CheckoutPage extends BasePage {
     private static final By DELETE_SECOND_ADDRESS = By.cssSelector("#delivery-addresses .address-item.selected .address-footer .delete-address.text-muted:nth-child(2)");
     private static final By CHECKOUT_SHIPPING_SECTION = By.cssSelector("#checkout-delivery-step");
     private static final By IS_COMMENT_ADDED = By.cssSelector("textarea");
-
-    public CheckoutPage(WebDriver driver) {
-        super(driver);
-    }
-
     private PersonalDetails pd = getPersonalDetails();
     private static final By ADDRESS_SECTION = By.id("checkout-addresses-step");
     private static final By ADDRESS_INPUT = By.name("address1");
