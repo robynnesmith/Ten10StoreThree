@@ -156,7 +156,7 @@ public class BuyJourney {
     @Test
     //PASS ADD NUMBER TO EMAIL EACH TIME
     public void subscribeNewsAndSpecialSales(){
-        homepage.inputEmailToNews("name12@name.com");
+        homepage.inputEmailToNews("name120@name.com");
         homepage.clickSubscribe();
 
         homepage.validateSubscribed();
