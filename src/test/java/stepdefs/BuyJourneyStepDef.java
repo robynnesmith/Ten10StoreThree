@@ -33,6 +33,9 @@ public class BuyJourneyStepDef {
             case "contact us":
                 homepage.clickContactUs();
                 break;
+            case "summer dresses":
+                homepage.hoverAndClickSummerDresses();
+                break;
             default:
                 throw new IllegalArgumentException("Unrecognised page provided");
         }
@@ -113,6 +116,51 @@ public class BuyJourneyStepDef {
     @Then("^the confirmation message is displayed$")
     public void verifyConfirmationMessage(){
         homepage.validateMessageSent();
+    }
+
+    @When("^the user adds an item to cart through quick view$")
+    public void addItemThroughQuickView(){
+        homepage.addItemToCart();
+    }
+    @Then("^the item is added to cart from summer dresses$")
+    public void verifyItemIsInCart(){
+        homepage.addedToCart();
+    }
+
+    @When("^the user types product name into search our catalogue bar$")
+    public void searchProduct(){
+        homepage.searchForDress();
+    }
+
+    @And("^completes adding item to cart$")
+    public void completeAddingItem(){
+        homepage.addItemToCart();
+    }
+
+    @Then("^item is added to cart from search$")
+    public void itemAddedFromSearch(){
+        homepage.addedToCart();
+    }
+
+    @When("^the user enters a high value in the quantity field$")
+    public void enterHighQuantity(){
+        productPage.changeQuantity("500");
+        productPage.selectQuantity();
+    }
+
+    @Then("^insufficient stock message is displayed$")
+    public void verifyInsufficientStock(){
+        productPage.verifyInsufficientStock();
+    }
+
+    @When("^the user selects a product with different options$")
+    public void selectFadedShortSleeveShirt(){
+        homepage.searchForShirt();
+    }
+
+    @Then("^the message 'Product available with different options' is displayed$")
+    public void verifyDifferentOptionsMessage(){
+        productPage.verifyProductAvailableWithOtherOptions();
     }
 
 

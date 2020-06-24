@@ -34,6 +34,9 @@ public class HomePage extends BasePage {
     private static final By SUCCESSFULLY_SUBSCRIBED = By.cssSelector(".alert.alert-success");
     private static final By MESSAGE_SENT = By.cssSelector(".col-xs-12.alert.alert-success");
     private static final By ADD_TO_CART = By.cssSelector(".btn.btn-primary.add-to-cart");
+    private static final By SUMMER_DRESSES = By.id("category-11");
+    private static final By SEARCH_BAR = By.name("s");
+    private static final By SEARCH_BUTTON = By.cssSelector(".material-icons.search:first-of-type");
 
     public void goTo() {
         driver.get(URL);
@@ -125,8 +128,22 @@ public class HomePage extends BasePage {
         Assert.assertTrue(elementIsVisible(addedToCart));
     }
 
-    public void clearAllCookies(){
-        clearAllCookies();
+    public void hoverAndClickSummerDresses(){ hoverAndClick(driver, WOMENS_BUTTON, SUMMER_DRESSES);}
+
+    public void searchForDress(){
+        findAndType(SEARCH_BAR, "PRINTED SUMMER DRESS");
+        waitAndClick(SEARCH_BUTTON);
+    }
+
+    public void searchForShirt(){
+        findAndType(SEARCH_BAR, "FADED SHORT SLEEVES T-SHIRT");
+        waitAndClick(SEARCH_BUTTON);
+        WebElement firstProductImage = driver.findElement(FIRST_PRODUCT_IMAGE);
+        WebElement firstProductQuickView = driver.findElement(FIRST_PRODUCT_QUICKVIEW);
+        actions
+                .moveToElement(firstProductImage)
+                .click(firstProductQuickView)
+                .perform();
     }
 
 }
