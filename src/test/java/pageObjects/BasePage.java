@@ -46,11 +46,11 @@ abstract class BasePage {
         element.sendKeys(inputString);
     }
 
-    void waitUntilVisible(By selector){
+    void waitUntilVisible(By selector) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
     }
 
-    void waitUntilInvisible(By selector){
+    void waitUntilInvisible(By selector) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(selector));
     }
 
@@ -58,16 +58,16 @@ abstract class BasePage {
         return pd;
     }
 
-    void checkTextExistsInElement(String tagName, String inputText){
+    void checkTextExistsInElement(String tagName, String inputText) {
         Assert.assertTrue(driver.findElement(By.tagName(String.valueOf(tagName))).getText().contains(inputText));
 
     }
 
-    void checkTextExistsOnPage(String input){
+    void checkTextExistsOnPage(String input) {
         Assert.assertTrue(driver.getPageSource().contains(input));
     }
 
-    public void clearCookies(){
+    public void clearCookies() {
         driver.manage().deleteAllCookies();
     }
 
