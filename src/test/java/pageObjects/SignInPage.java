@@ -53,7 +53,7 @@ public class SignInPage extends BasePage {
     private static final By ORDER_MESSAGE = By.cssSelector("textarea");
     private static final By SEND_BUTTON = By.cssSelector("[name=submitMessage]");
     private static final By SEND_CHECK = By.cssSelector("article.alert.alert-success");
-    private static final By RETRIEVE_PASSWORD_CHECK = By.cssSelector("li > p");
+    private static final By RETRIEVE_PASSWORD_CHECK = By.cssSelector("ul.ps-alert-success");
 
     private static final By ORDER_HISTORY_BUTTON = By.linkText("Orders");
 
