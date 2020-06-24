@@ -31,7 +31,7 @@ public class SignInPage extends BasePage {
     private static final By UNREGISTERED_USER_ALERT = By.cssSelector(".alert.alert-danger");
     private static final By FORGOTTEN_PASSWORD_LINK = By.cssSelector(".forgot-password");
     private static final By SEND_RESET_LINK_BUTTON = By.cssSelector(".forgotten-password button:first-of-type");
-    private static final By NOTIFICATION_MESSAGE = By.cssSelector(".ps-alert-error");
+    private static final By NOTIFICATION_MESSAGE = By.cssSelector("ul.ps-alert-error");
     private static final By CLICK_INFORMATION = By.cssSelector("#identity-link > span");
     private static final By CHECK_OFFER = By.cssSelector("[name=optin]");
     private static final By CHECK_NEWSLETTER = By.cssSelector("[name=newsletter]");
@@ -48,7 +48,7 @@ public class SignInPage extends BasePage {
     private static final By LOGGED_IN_ZIP = By.cssSelector("[name=postcode");
     private static final By SAVED_NEW_ADDRESS_LOGGED_IN = By.cssSelector("footer > button");
     private static final By ORDERS_LOGIN_BUTTON = By.cssSelector("#history-link > span");
-    private static final By ORDER_DETAILS_LINK = By.cssSelector("tr:nth-child(14) > td.text-sm-center.order-actions > a:nth-child(1)");
+    private static final By ORDER_DETAILS_LINK = By.cssSelector("tr:last-child > td.text-sm-center.order-actions > a:nth-child(1)");
     private static final By CLICK_LOGGED_IN_TYPE = By.cssSelector("select");
     private static final By ORDER_MESSAGE = By.cssSelector("textarea");
     private static final By SEND_BUTTON = By.cssSelector("[name=submitMessage]");
@@ -74,7 +74,9 @@ public class SignInPage extends BasePage {
         findAndType(PASSWORD_INPUT, pd.getPassword());
     }
 
-    public void enterInputPassword(String input){ findAndType(PASSWORD_INPUT, input);}
+    public void enterInputPassword(String input) {
+        findAndType(PASSWORD_INPUT, input);
+    }
 
     public void successfulSignIn() {
         waitUntilVisible(SIGN_OUT_BUTTON);
@@ -106,7 +108,9 @@ public class SignInPage extends BasePage {
         waitAndClick(SEND_RESET_LINK_BUTTON);
     }
 
-    public void clickOrderHistory(){ waitAndClick(ORDER_HISTORY_BUTTON);}
+    public void clickOrderHistory() {
+        waitAndClick(ORDER_HISTORY_BUTTON);
+    }
 
     public void confirmationMessage() {
         WebElement alertBox = driver.findElement(NOTIFICATION_MESSAGE);
@@ -259,29 +263,34 @@ public class SignInPage extends BasePage {
                 .click(productDropDown)
                 .perform();
         Select dropDownPick = new Select(driver.findElement(By.name("id_product")));
-        dropDownPick.selectByVisibleText("Printed Dress - Size : S- Color : Orange");
+        dropDownPick.selectByVisibleText("Faded Short Sleeves T-shirt - Size : S- Color : Orange");
     }
 
     public void inputMessage() {
         findAndType(ORDER_MESSAGE, "Take from the Rich, give to the poor");
     }
 
-    public void checkMessageSent() {
+    public void MessageSend() {
         WebElement MessageOutbox = driver.findElement(SEND_BUTTON);
         actions
                 .moveToElement(MessageOutbox)
                 .click(MessageOutbox)
                 .perform();
+    }
+    public void checkMessageSent(){
         WebElement isMessageSentCheck = driver.findElement(SEND_CHECK);
         assertTrue(elementIsVisible(isMessageSentCheck));
     }
 
-    public void invalidUserPasswordReset() {
+    public void invalidUserPasswordInput() {
         forgottenPassword();
         enterSignInEmailAddress(pd.getInvalidEmail());
         clickRetrievePassword();
+    }
+
+    public void invalidUserPasswordCheck() {
         WebElement InvalidPasswordResetCheck = driver.findElement(RETRIEVE_PASSWORD_CHECK);
         assertTrue(elementIsVisible(InvalidPasswordResetCheck));
+        }
     }
-}
 

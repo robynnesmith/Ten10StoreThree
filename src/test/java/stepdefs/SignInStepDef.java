@@ -18,48 +18,59 @@ public class SignInStepDef {
 
 
     @Given("the user is on the {string} page")
-    public void theUserIsOnPage(String SignIn) {
-        homePage.goTo();
-        switch (SignIn) {
-            case "sign in":
+    public void theUserIsOnPage(String Page) {
+        switch (Page) {
+            case ("sign in"):
+                homePage.goTo();
                 homePage.navigateToSignInPage();
+                break;
+            case ("Information"):
+                signIn.clickInformation();
+                break;
+            case ("Address"):
+                signIn.ClickAddressLogin();
+                break;
+            case ("pre existing order"):
+                signIn.ClickOrderHistory();
+                signIn.ClickOrderDetails();
+                signIn.clickProductType();
         }
     }
 
-
-    @When("the user fills in sign in details with {string} email")
+    @When("the user fills in sign in details with a {string}")
     public void User(String User) {
         switch (User) {
-            case ("registered"):
+            case ("registered email"):
                 signIn.enterSignInEmailAddress("test@sherwood.com");
                 signIn.enterPassword();
                 signIn.clickLogIn();
                 break;
-            case ("unregistered"):
+            case ("unregistered email"):
                 signIn.enterSignInEmailAddress("ghsjdc@test.com");
                 signIn.enterPassword();
                 signIn.clickLogIn();
                 break;
-
+            case ("wrong password"):
+                signIn.enterSignInEmailAddress("test@sherwood.com");
+                signIn.enterInputPassword("Obviously Wrong");
+                signIn.clickLogIn();
+                break;
         }
     }
 
     @Then("the user has a {string}")
     public void theUserIsSigned(String Status) {
         switch (Status) {
-            case ("signed-in-account"):
+            case ("signed in account"):
                 signIn.successfulSignIn();
                 signIn.clickSignOut();
-                homePage.goTo();
                 break;
-            case ("signed-out-account"):
+            case ("signed out account"):
                 signIn.clickSignOut();
                 signIn.userSignedOut();
-                homePage.goTo();
                 break;
-            case ("invalid-account"):
+            case ("invalid account"):
                 signIn.unregisteredUserAlert();
-                homePage.goTo();
                 break;
         }
     }
@@ -74,16 +85,36 @@ public class SignInStepDef {
                 signIn.enterSignInEmailAddress("test@sherwood.com");
                 signIn.enterPassword();
                 signIn.clickLogIn();
+                break;
 
         }
     }
 
-    @And("fills in {string} on next page")
+    @And("The user fills in {string} on next page")
     public void fillsInOnNextPage(String fill) {
         switch (fill) {
-            case ("password-email-form"):
+            case ("password email form"):
                 signIn.enterForgottenPasswordEmailAddress("test@sherwood.com");
                 signIn.clickRetrievePassword();
+                break;
+            case ("change preferences form"):
+                signIn.checkOffers();
+                signIn.checkNewsletter();
+                signIn.saveChanges();
+                break;
+            case ("invalid email form"):
+                signIn.enterForgottenPasswordEmailAddress("ghsjdc@test.com");
+                signIn.clickRetrievePassword();
+                break;
+            case ("new address form"):
+                signIn.AddAddressLoggedIn();
+                signIn.AddingNewAddressQuick();
+                signIn.AddingNewAddressLonger();
+                signIn.SaveAddressLoggedIn();
+                break;
+            case ("a message"):
+                signIn.inputMessage();
+                signIn.MessageSend();
                 break;
         }
 
@@ -91,10 +122,28 @@ public class SignInStepDef {
 
     @Then("{string} is displayed")
     public void isDisplayed(String WebMessage) {
-        switch (WebMessage){
-            case("alert message"):
+        switch (WebMessage) {
+            case ("alert message"):
                 signIn.confirmationMessage();
                 homePage.goTo();
+                break;
+            case ("alert success message"):
+                signIn.confirmedChanges();
+                signIn.clickSignOut();
+                break;
+            case ("wrong password alert"):
+                signIn.confirmInvalidPassword();
+                break;
+            case ("new address"):
+                signIn.CheckingAddressLoggedIn();
+                signIn.clickSignOut();
+                break;
+            case ("updated order"):
+                signIn.checkMessageSent();
+                signIn.clickSignOut();
+                break;
+            case ("unregistered email alert"):
+                signIn.invalidUserPasswordCheck();
                 break;
         }
     }

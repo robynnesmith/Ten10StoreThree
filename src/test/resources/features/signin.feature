@@ -4,9 +4,9 @@ Feature: Sign In
 
     Given the user is on the "sign in" page
 
-    When the user fills in sign in details with "registered" email
+    When the user fills in sign in details with a "registered email"
 
-    Then the user has a "signed-in-account"
+    Then the user has a "signed in account"
 
 
 
@@ -14,16 +14,16 @@ Feature: Sign In
 
     Given the user is on the "sign in" page
 
-    When the user fills in sign in details with "unregistered" email
+    When the user fills in sign in details with a "unregistered email"
 
-    Then the user has a "invalid-account"
+    Then the user has a "invalid account"
 
 
   Scenario: Sign in but forgotten password
     Given the user is on the "sign in" page
 
     When the user clicks "forgotten password"
-    And fills in "password-email-form" on next page
+    And The user fills in "password email form" on next page
 
     Then "alert message" is displayed
 
@@ -33,46 +33,51 @@ Feature: Sign In
 
     When the user clicks "sign out"
 
-    Then the user has a "signed-out-account"
+    Then the user has a "signed out account"
 
 
   Scenario: Change Account Preferences
-    Given the user has a "signed-in-account"
+    Given the user is on the "sign in" page
+    And the user fills in sign in details with a "registered email"
+    And the user is on the "Information" page
 
-    When the user navigates to "Information"
-    And "change-preferences"
+    When The user fills in "change preferences form" on next page
 
     Then "alert success message" is displayed
 
 
   Scenario: Sign in with Invalid password
-    Given the user has a "signed-in-account"
+    Given the user is on the "sign in" page
 
-    When the users inputs a wrong "password"
+    When the user fills in sign in details with a "wrong password"
 
-    Then "error message" is displayed
+    Then "wrong password alert" is displayed
 
 
   Scenario: User adds address
-    Given the user navigates to "Address"
+    Given the user is on the "sign in" page
+    And the user fills in sign in details with a "registered email"
+    And the user is on the "Address" page
 
-    When the user adds a new address
+    When The user fills in "new address form" on next page
 
-    Then the new address is displayed
+    Then "new address" is displayed
 
 
   Scenario: User adds message to order
-    Given the user has a "signed-in-account"
-
-    When the user navigates to a pre-existing order
-    And adds a message
-
-    Then the "updated order" alert is displayed
-
-
-  Scenario: User inputs invalid E-Mail to change password
     Given the user is on the "sign in" page
+    And the user fills in sign in details with a "registered email"
+    And the user is on the "pre existing order" page
 
-    When the user inputs an "unregistered" email in the forgotten password input
+    When The user fills in "a message" on next page
 
-    Then the "unregistered email alert" is displayed
+    Then "updated order" is displayed
+
+
+  Scenario: User inputs invalid E-Mail as forgotten password
+    Given the user is on the "sign in" page
+    And the user clicks "forgotten password"
+
+    When The user fills in "invalid email form" on next page
+
+    Then "unregistered email alert" is displayed

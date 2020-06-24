@@ -128,7 +128,7 @@ public class SignIn {
         signInPage.confirmInvalidPassword();
     }
 
-    /*
+    /**
      Pre-Conditions
       *have existing account and be logged in
      Steps
@@ -165,6 +165,7 @@ public class SignIn {
         signInPage.ClickOrderDetails();
         signInPage.clickProductType();
         signInPage.inputMessage();
+        signInPage.MessageSend();
         signInPage.checkMessageSent();
     }
     /**
@@ -178,7 +179,8 @@ public class SignIn {
     @Test
     public void UnregisteredEmailPassword(){
         homepage.navigateToSignInPage();
-        signInPage.invalidUserPasswordReset();
+        signInPage.invalidUserPasswordInput();
+        signInPage.invalidUserPasswordCheck();
     }
 }
 
