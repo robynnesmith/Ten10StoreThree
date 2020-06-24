@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Random;
+
 /**
  * Created by jack.forman on 22/10/2016.
  */
@@ -18,8 +20,8 @@ public class HomePage extends BasePage {
     private static final By SIGN_IN_BUTTON = By.cssSelector("#_desktop_user_info a");
     private static final By BLOUSE_IMAGE = By.cssSelector("img[alt = 'Blouse'");
     private static final By QUICK_VIEW_LINK = By.cssSelector(".quick-view");
-    private static final By FIRST_PRODUCT_IMAGE = By.cssSelector("div.products > article:first-child img");
-    private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:first-child .quick-view");
+    private static final By FIRST_PRODUCT_IMAGE = By.cssSelector("div.products > article:last-child img");
+    private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:last-child .quick-view");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_WINDOW = By.cssSelector("#myModalLabel");
     private static final By WOMENS_BUTTON = By.cssSelector(".dropdown-item:first-of-type");
@@ -29,6 +31,9 @@ public class HomePage extends BasePage {
     private static final By CONTACT_US_EMAIL = By.name("from");
     private static final By MESSAGE_FROM = By.name("message");
     private static final By SEND_MESSAGE = By.name("submitMessage");
+    private static final By SUCCESSFULLY_SUBSCRIBED = By.cssSelector(".alert.alert-success");
+    private static final By MESSAGE_SENT = By.cssSelector(".col-xs-12.alert.alert-success");
+    private static final By ADD_TO_CART = By.cssSelector(".btn.btn-primary.add-to-cart");
 
     public void goTo() {
         driver.get(URL);
@@ -73,6 +78,8 @@ public class HomePage extends BasePage {
         Assert.assertTrue(elementIsVisible(addedToCart));
     }
 
+    public void clickAddToCart() { waitAndClick(ADD_TO_CART); }
+
 
     public void itemAddedToCart() {
         maximiseBrowserWindow();
@@ -81,7 +88,9 @@ public class HomePage extends BasePage {
     }
 
     public void inputEmailToNews(String input){
-        findAndType(EMAIL_INPUT, input);
+        Random randomNumber = new Random();
+        int randomInt = randomNumber. nextInt(1000);
+        findAndType(EMAIL_INPUT, input + randomInt);
     }
 
     public void clickSubscribe(){
@@ -89,7 +98,9 @@ public class HomePage extends BasePage {
     }
 
     public void validateSubscribed(){
-        checkTextExistsInElement("main", "You have successfully subscribed to this newsletter.");
+        waitUntilVisible(SUCCESSFULLY_SUBSCRIBED);
+        WebElement addedToCart = driver.findElement(SUCCESSFULLY_SUBSCRIBED);
+        Assert.assertTrue(elementIsVisible(addedToCart));
     }
 
     public void clickContactUs(){
@@ -108,8 +119,14 @@ public class HomePage extends BasePage {
         waitAndClick(SEND_MESSAGE);
     }
 
-    public void validateMessageSent(){
-        checkTextExistsInElement("section", "Your message has been successfully sent to our team.");
+    public void validateMessageSent() {
+        waitUntilVisible(MESSAGE_SENT);
+        WebElement addedToCart = driver.findElement(MESSAGE_SENT);
+        Assert.assertTrue(elementIsVisible(addedToCart));
+    }
+
+    public void clearAllCookies(){
+        clearAllCookies();
     }
 
 }

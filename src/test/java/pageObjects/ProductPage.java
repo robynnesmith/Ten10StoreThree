@@ -13,7 +13,7 @@ public class ProductPage extends BasePage {
     private static final By PRINTED_DRESS_IMAGE = By.cssSelector("img[alt = 'Printed Dress'");
     private static final By QUANTITY_UP_BUTTON = By.cssSelector(".material-icons.touchspin-up");
     private static final By SIZE_DROPDWON = By.cssSelector("#group_1");
-    private static final By WHITE_COLOUR_OPTION = By.cssSelector("input[value = '8']");
+    private static final By WHITE_COLOUR_OPTION = By.cssSelector("input[value = '24']");
 
     public void productPageDisplayed() {
         WebElement productPage = driver.findElement(ADD_TO_CART_BUTTON);
