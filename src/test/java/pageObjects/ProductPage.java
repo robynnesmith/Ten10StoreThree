@@ -48,8 +48,8 @@ public class ProductPage extends BasePage {
 
     public void verifyInsufficientStock(){
         waitUntilVisible(NO_STOCK_MESSAGE);
-        WebElement addedToCart = driver.findElement(NO_STOCK_MESSAGE);
-        Assert.assertTrue(elementIsVisible(addedToCart));
+        WebElement NoStock = driver.findElement(NO_STOCK_MESSAGE);
+        Assert.assertTrue(elementIsVisible(NoStock));
     }
 
     public void verifyProductAvailableWithOtherOptions(){
