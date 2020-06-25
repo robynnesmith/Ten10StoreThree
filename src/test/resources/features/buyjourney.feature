@@ -57,6 +57,7 @@ Feature: BuyJourney
     Given the user is on the "home" page
     When the user selects a product with different options
     Then the message 'Product available with different options' is displayed
+        And the user is on the "sign in" page
 
 
 

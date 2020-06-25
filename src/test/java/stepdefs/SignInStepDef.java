@@ -20,7 +20,7 @@ public class SignInStepDef {
     public void User(String User) {
         switch (User) {
             case ("registered email"):
-                signIn.SignButtonFix();
+
                 signIn.enterSignInEmailAddress("test@sherwood.com");
                 signIn.enterPassword();
                 signIn.clickLogIn();

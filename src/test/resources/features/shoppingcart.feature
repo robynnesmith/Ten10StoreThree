@@ -1,7 +1,7 @@
-Feature: Shoppingcart
+Feature: ShoppingCart
 
   Background:
-    Given the user is on the "Homepage" page
+    Given the user is on the "homepage" page
 
   Scenario: Remove item from basket
     Given the user already has an item in their basket
