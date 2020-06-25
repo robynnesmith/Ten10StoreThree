@@ -12,30 +12,9 @@ public class SignInStepDef {
     private HomePage homePage = new HomePage();
     private ShoppingCartPage basketpage = new ShoppingCartPage();
     private SignInPage signIn = new SignInPage();
-    private SignIn signInTests = new SignIn();
     private CreateNewAccountPage createNewAccountPage = new CreateNewAccountPage();
     private PersonalDetails pd = new PersonalDetails("Robin", "Hood", "test@sherwood.com", "ghsjdc@test.com", "LadyM", "Sherwood Forest", "Nottingham", "Minnesota", "12345", "6320864892", "Forest");
 
-
-    @Given("the user is on the {string} page")
-    public void theUserIsOnPage(String Page) {
-        switch (Page) {
-            case ("sign in"):
-                homePage.goTo();
-                homePage.navigateToSignInPage();
-                break;
-            case ("Information"):
-                signIn.clickInformation();
-                break;
-            case ("Address"):
-                signIn.ClickAddressLogin();
-                break;
-            case ("pre existing order"):
-                signIn.ClickOrderHistory();
-                signIn.ClickOrderDetails();
-                signIn.clickProductType();
-        }
-    }
 
     @When("the user fills in sign in details with a {string}")
     public void User(String User) {

@@ -20,6 +20,7 @@ Feature: Sign In
 
 
   Scenario: Sign in but forgotten password
+
     Given the user is on the "sign in" page
 
     When the user clicks "forgotten password"
@@ -29,6 +30,7 @@ Feature: Sign In
 
 
   Scenario: Sign out of Account
+
     Given the user is on the "sign in" page
 
     When the user clicks "sign out"
@@ -37,7 +39,9 @@ Feature: Sign In
 
 
   Scenario: Change Account Preferences
-    Given the user is on the "sign in" page
+
+    Given the user is on the "home" page
+    And the user is on the "sign in" page
     And the user fills in sign in details with a "registered email"
     And the user is on the "Information" page
 
@@ -47,6 +51,7 @@ Feature: Sign In
 
 
   Scenario: Sign in with Invalid password
+
     Given the user is on the "sign in" page
 
     When the user fills in sign in details with a "wrong password"
@@ -55,6 +60,7 @@ Feature: Sign In
 
 
   Scenario: User adds address
+
     Given the user is on the "sign in" page
     And the user fills in sign in details with a "registered email"
     And the user is on the "Address" page
@@ -65,6 +71,7 @@ Feature: Sign In
 
 
   Scenario: User adds message to order
+
     Given the user is on the "sign in" page
     And the user fills in sign in details with a "registered email"
     And the user is on the "pre existing order" page
@@ -75,6 +82,7 @@ Feature: Sign In
 
 
   Scenario: User inputs invalid E-Mail as forgotten password
+
     Given the user is on the "sign in" page
     And the user clicks "forgotten password"
 

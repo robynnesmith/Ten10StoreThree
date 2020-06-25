@@ -292,5 +292,12 @@ public class SignInPage extends BasePage {
         WebElement InvalidPasswordResetCheck = driver.findElement(RETRIEVE_PASSWORD_CHECK);
         assertTrue(elementIsVisible(InvalidPasswordResetCheck));
         }
+    public void AccountClicking() {
+        WebElement clickAccountPage = driver.findElement(By.cssSelector("#_desktop_user_info > div > a.account > span"));
+        actions
+                .moveToElement(clickAccountPage)
+                .click(clickAccountPage)
+                .perform();
     }
+}
 

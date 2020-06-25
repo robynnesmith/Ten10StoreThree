@@ -24,7 +24,6 @@ public class HomePage extends BasePage {
     private static final By FIRST_PRODUCT_QUICKVIEW = By.cssSelector("div.products > article:last-child .quick-view");
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_WINDOW = By.cssSelector("#myModalLabel");
-    private static final By WOMENS_BUTTON = By.cssSelector(".dropdown-item:first-of-type");
     private static final By EMAIL_INPUT = By.name("email");
     private static final By SUBSCRIBE_BUTTON = By.name("submitNewsletter");
     private static final By CONTACT_US_BUTTON = By.linkText("Contact us");
@@ -34,6 +33,8 @@ public class HomePage extends BasePage {
     private static final By SUCCESSFULLY_SUBSCRIBED = By.cssSelector(".alert.alert-success");
     private static final By MESSAGE_SENT = By.cssSelector(".col-xs-12.alert.alert-success");
     private static final By ADD_TO_CART = By.cssSelector(".btn.btn-primary.add-to-cart");
+    private static final By SUMMER_DRESSES = By.id("category-11");
+    private static final By WOMENS_BUTTON = By.cssSelector(".dropdown-item:first-of-type");
 
     public void goTo() {
         driver.get(URL);
@@ -123,6 +124,12 @@ public class HomePage extends BasePage {
         waitUntilVisible(MESSAGE_SENT);
         WebElement addedToCart = driver.findElement(MESSAGE_SENT);
         Assert.assertTrue(elementIsVisible(addedToCart));
+    }
+
+    public void hoverAndClickSummerDresses(){ hoverAndClick(driver, WOMENS_BUTTON, SUMMER_DRESSES);}
+
+    void hoverAndClick(WebDriver driver, By womensButton, By summerDresses){
+
     }
 
     public void clearAllCookies(){

@@ -84,9 +84,7 @@ public class ShoppingCartPage extends BasePage {
         WebElement personalInformationPage = driver.findElement(PERSONAL_INFORMATION_PAGE);
         Assert.assertTrue(elementIsVisible(personalInformationPage));
     }
-
-
-
+    
     public void addItemToCart() {
         homePage.itemAddedToCart();
         navigateToBasket();
