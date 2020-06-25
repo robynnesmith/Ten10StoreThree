@@ -24,7 +24,7 @@ public class SignInPage extends BasePage {
     private static final By EMAIL_ADDRESS_INPUT_BOX = By.cssSelector("input#email_create");
     private static final By CREATE_NEW_ACCOUNT_BUTTON = By.cssSelector(".no-account>a");
     private static final By ALREADY_REGISTERED_ALERT = By.cssSelector(".alert.alert-danger");
-    private static final By EMAIL_INPUT = By.name("email");
+    private static final By EMAIL_INPUT = By.cssSelector("[name='email']");
     private static final By PASSWORD_INPUT = By.name("password");
     private static final By SIGN_IN_BUTTON = By.cssSelector("#login-form button[type='submit']");
     private static final By SIGN_OUT_BUTTON = By.cssSelector(".logout.hidden-sm-down");
@@ -167,6 +167,14 @@ public class SignInPage extends BasePage {
         actions
                 .moveToElement(Newsletter)
                 .click(Newsletter)
+                .perform();
+    }
+
+    public void clickSignIn() {
+        WebElement clickSignInButton = driver.findElement(By.cssSelector("#_desktop_user_info a"));
+        actions
+                .moveToElement(clickSignInButton)
+                .click(clickSignInButton)
                 .perform();
     }
 

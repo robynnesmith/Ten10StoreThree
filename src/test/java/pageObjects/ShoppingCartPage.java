@@ -30,7 +30,6 @@ public class ShoppingCartPage extends BasePage {
     private static final By PERSONAL_INFORMATION_PAGE = By.id("checkout-personal-information-step");
     private static final By MODAL_PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".cart-content-btn>a");
 
-
     public void addToCart() {
         waitAndClick(ADD_TO_CART_BUTTON);
     }
@@ -84,7 +83,7 @@ public class ShoppingCartPage extends BasePage {
         WebElement personalInformationPage = driver.findElement(PERSONAL_INFORMATION_PAGE);
         Assert.assertTrue(elementIsVisible(personalInformationPage));
     }
-    
+
     public void addItemToCart() {
         homePage.itemAddedToCart();
         navigateToBasket();
@@ -93,6 +92,10 @@ public class ShoppingCartPage extends BasePage {
 
     public void clickModalProceedToCheckout() {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
+    }
+
+    public void checkItemIsInBasket(){
+        checkTextExistsOnPage("1 item");
     }
 
     public void checkThereAreTwoItems(){

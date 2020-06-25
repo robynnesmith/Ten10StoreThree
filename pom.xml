@@ -53,6 +53,12 @@
             <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-gherkin-vintage</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 

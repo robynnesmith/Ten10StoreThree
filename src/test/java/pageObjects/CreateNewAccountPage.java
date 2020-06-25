@@ -16,12 +16,19 @@ public class CreateNewAccountPage extends BasePage {
     private static final By CHECK_INVALID_NAME = By.cssSelector(".help-block");
     private static final By BIRTHDATE_INPUT = By.cssSelector("[name='birthday']");
     private static final By BIRTHDATE_STRING = By.cssSelector(".help-block");
+    PersonalDetails pd = getPersonalDetails();
 
     public void enterPersonalDetails() {
-        PersonalDetails pd = getPersonalDetails();
         findAndType(FIRST_NAME_INPUT, pd.getFirstName());
         findAndType(LAST_NAME_INPUT, pd.getLastName());
         findAndType(EMAIL_INPUT, pd.getEmail());
+        findAndType(PASSWORD_INPUT, pd.getPassword());
+    }
+
+    public void registerUserWithEmail(String emailType) {
+        findAndType(FIRST_NAME_INPUT, pd.getFirstName());
+        findAndType(LAST_NAME_INPUT, pd.getLastName());
+        findAndType(EMAIL_INPUT, pd.getEmail(emailType));
         findAndType(PASSWORD_INPUT, pd.getPassword());
     }
 
