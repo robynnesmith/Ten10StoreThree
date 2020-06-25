@@ -17,30 +17,6 @@ public class BuyJourneyStepDef {
     private OrderHistory orderHistory = new OrderHistory();
     private AllProductsPage allProductsPage = new AllProductsPage();
 
-    @Given("^the user is on the \"([^\"]*)\" page$")
-    public void theUserIsOnThePage(String page){
-        homepage.goTo();
-        switch (page){
-            case "home":
-                homepage.goTo();
-                break;
-            case "product":
-                productPage.navigatetoProductPage();
-                break;
-            case "sign in":
-                homepage.navigateToSignInPage();
-                break;
-            case "contact us":
-                homepage.clickContactUs();
-                break;
-            case "summer dresses":
-                homepage.hoverAndClickSummerDresses();
-                break;
-            default:
-                throw new IllegalArgumentException("Unrecognised page provided");
-        }
-    }
-
     @When("^the user clicks on more button$")
     public void clickMoreButton(){
         homepage.clickMoreButton();

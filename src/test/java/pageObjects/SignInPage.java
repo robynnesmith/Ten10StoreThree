@@ -299,5 +299,12 @@ public class SignInPage extends BasePage {
                 .click(clickAccountPage)
                 .perform();
     }
+    public void SignButtonFix() {
+        WebElement clickAccountPage = driver.findElement(By.cssSelector("#_desktop_user_info > div > a.account > span"));
+        actions
+                .moveToElement(clickAccountPage)
+                .click(clickAccountPage)
+                .perform();
+    }
 }
 
