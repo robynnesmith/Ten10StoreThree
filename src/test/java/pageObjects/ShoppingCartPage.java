@@ -13,11 +13,7 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class ShoppingCartPage extends BasePage {
 
-    public ShoppingCartPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public HomePage homePage = new HomePage(driver);
+    public HomePage homePage = new HomePage();
 
     private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
     private static final By MODAL_CLOSE = By.cssSelector(".close");
@@ -29,6 +25,7 @@ public class ShoppingCartPage extends BasePage {
     private static final By QUANTITY_INPUT = By.cssSelector(".js-cart-line-product-quantity.form-control");
     private static final By QUANTITY_INPUT_VALUE_2 = By.cssSelector("input[value'2']");
     private static final By PRODUCT_QUANTITY_TEXT = By.cssSelector("#cart-subtotal-products span:first-child");
+    private static final By PRODUCT_QUANTITY_TEXT1 = By.xpath("//div[@id='cart-subtotal-products']/span");
     private static final By PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".checkout a");
     private static final By PERSONAL_INFORMATION_PAGE = By.id("checkout-personal-information-step");
     private static final By MODAL_PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".cart-content-btn>a");
@@ -98,6 +95,14 @@ public class ShoppingCartPage extends BasePage {
 
     public void clickModalProceedToCheckout() {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
+    }
+
+    public void checkThereAreTwoItems(){
+        checkTextExistsOnPage("2 items");
+    }
+
+    public void checkThatBasketLogoHasTwo(){
+        checkTextExistsInElement("a", "(2)");
     }
 }
 
