@@ -39,6 +39,9 @@ public class ShoppingCartPage extends BasePage {
         waitUntilInvisible(MODAL_BODY);
         waitAndClick(CART_BUTTON);
     }
+    public void goToBasket(){
+        waitAndClick(CART_BUTTON);
+    }
 
     public void deleteItemFromBasket() {
         waitAndClick(DELETE_FROM_CART_BUTTON);

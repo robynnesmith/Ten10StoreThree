@@ -45,7 +45,7 @@ public class ShoppingCartStepDef {
     homepage.addItemToCart();
     }
 
-    @Then("^verify the \"([^\"]*)\" v$")
+    @Then("^verify the \"([^\"]*)\"$")
     public void thenVerifyThe(String verify) {
         switch (verify){
             case "item is removed from the basket":
@@ -64,17 +64,6 @@ public class ShoppingCartStepDef {
         }
     }
 
-    /* @And ("^the user is on the \"([^\"]*)\" page$")
-    public void userIsOnThePage(String page) {
-        switch (page) {
-            case "shopping cart":
-                basketPage.navigateToBasket();
-                break;
-            default:
-                throw new IllegalArgumentException("Unrecognised action");
-        }
-    } */
-
     @And("^verify the Product counter is updated")
     public void verifyTheProductCounterIsUpdated(){
         basketPage.verifyProductCountUpdated();
@@ -92,11 +81,12 @@ public class ShoppingCartStepDef {
 
     @And("the user is on the shopping cart page")
     public void userIsOnThePage() {
-        basketPage.navigateToBasket();
+        basketPage.goToBasket();
     }
 
     @Given("the user already has an item in their basket")
     public void theUserAlreadyHasAnItemInTheirBasket() {
+        signInPage.SignButtonFix();
         signInPage.clickSignIn();
         signInPage.login();
         homepage.goTo();

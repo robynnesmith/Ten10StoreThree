@@ -26,8 +26,11 @@ public class CommonStepDef {
             case "sign in":
                 homepage.navigateToSignInPage();
                 break;
+            case "sign back in":
+                signIn.clickSignOut();
+                homepage.navigateToSignInPage();
             case "shopping cart":
-                basketPage.navigateToBasket();
+                basketPage.goToBasket();
                 break;
             case "contact us":
                 homepage.clickContactUs();

@@ -308,7 +308,7 @@ public class SignInPage extends BasePage {
                 .perform();
     }
     public void SignButtonFix() {
-        WebElement clickAccountPage = driver.findElement(By.cssSelector("#_desktop_user_info > div > a.account > span"));
+        WebElement clickAccountPage = driver.findElement(By.cssSelector("#_desktop_user_info > div > a > span"));
         actions
                 .moveToElement(clickAccountPage)
                 .click(clickAccountPage)

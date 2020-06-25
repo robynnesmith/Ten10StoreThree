@@ -2,7 +2,7 @@ Feature: Sign In
 
   Scenario: Sign in as Registered User
 
-    Given the user is on the "sign in" page
+    Given the user is on the "sign back in" page
 
     When the user fills in sign in details with a "registered email"
 
