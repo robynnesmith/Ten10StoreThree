@@ -1,5 +1,8 @@
 Feature: Shoppingcart
 
+  Background:
+    Given the user is on the "Homepage" page
+
   Scenario: Remove item from basket
     Given the user already has an item in their basket
     And the user is on the shopping cart page
@@ -9,14 +12,14 @@ Feature: Shoppingcart
 
   Scenario: Increase quantity of product
     Given the user already has an item in their basket
-    And the user is on the shopping cart page
+    And the user is on the "shopping cart" page
     When user "increases" quantity of product
     Then verify the "basket is updated" v
     And verify the Product counter is updated.
 
 
   Scenario: Proceed to checkout - not signed in
-    Given the user is on the shopping cart page
+    Given the user is on the "shopping cart" page
     And the user already has an item in their basket
     When the user clicks the "proceed to checkout" button
     Then verify the "sign in page is displayed" v

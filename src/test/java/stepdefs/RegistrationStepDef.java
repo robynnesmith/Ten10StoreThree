@@ -1,6 +1,5 @@
 package stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,23 +12,6 @@ public class RegistrationStepDef {
     private SignInPage signInPage = new SignInPage();
     private CreateNewAccountPage createNewAccountPage = new CreateNewAccountPage();
 
-    @Given("^the user is on the \"([^\"]*)\" page$")
-    public void theUserIsOnThePage(String page) {
-        homepage.goTo();
-        switch (page){
-            case "sign in":
-                homepage.navigateToSignInPage();
-                break;
-            case "shopping cart":
-                basketPage.navigateToBasket();
-                break;
-            case "homepage":
-                homepage.clickWomens();
-                break;
-            default:
-                throw new IllegalArgumentException("Unrecognised page provided");
-        }
-    }
 
     @When("^the user completes the registration form with a \"([^\"]*)\" email address$")
     public void theUserCompletesRegistrationWithAnEmailAddress(String emailType) {
@@ -51,7 +33,7 @@ public class RegistrationStepDef {
 
     @When("the user completes the registration form with a numeric name")
     public void theUserCompletedTheRegistrationFormWithAName() {
-        homepage.navigateToSignInPage();
+        signInPage.clickSignIn();
         signInPage.clickCreateAnAccount();
         createNewAccountPage.enterNumericNameDetails();
         createNewAccountPage.clickSave();

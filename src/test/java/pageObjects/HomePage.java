@@ -29,6 +29,8 @@ public class HomePage extends BasePage {
     private static final By CONTACT_US_EMAIL = By.name("from");
     private static final By MESSAGE_FROM = By.name("message");
     private static final By SEND_MESSAGE = By.name("submitMessage");
+    private static final By SUMMER_DRESSES = By.id("category-11");
+    //private static final By WOMENS_BUTTON = By.cssSelector(".dropdown-item:first-of-type");
 
     public void goTo() {
         driver.get(URL);
@@ -47,6 +49,8 @@ public class HomePage extends BasePage {
         WebElement hoverView = driver.findElement(QUICK_VIEW_LINK);
         Assert.assertTrue(elementIsVisible(hoverView));
     }
+
+    public void hoverAndClickSummerDresses(){ hoverAndClick(driver, WOMENS_BUTTON, SUMMER_DRESSES);}
 
     public void clickMoreButton() {
         waitAndClick(BLOUSE_IMAGE);

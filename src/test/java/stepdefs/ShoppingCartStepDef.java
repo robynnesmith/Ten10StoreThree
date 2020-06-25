@@ -97,7 +97,7 @@ public class ShoppingCartStepDef {
 
     @Given("the user already has an item in their basket")
     public void theUserAlreadyHasAnItemInTheirBasket() {
-        homepage.navigateToSignInPage();
+        signInPage.clickSignIn();
         signInPage.login();
         homepage.goTo();
         homepage.itemAddedToCart();
