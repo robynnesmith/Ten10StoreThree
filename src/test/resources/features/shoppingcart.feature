@@ -38,3 +38,4 @@ Feature: ShoppingCart
     Then verify the "basket is updated"
     And verify the Product counter is updated.
     And pricing and totals should be updated
+

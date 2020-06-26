@@ -66,8 +66,8 @@ public class ShoppingCart {
         homePage.itemAddedToCart();
         basketpage.navigateToBasket();
         basketpage.increaseQuantity();
-        //basketpage.verifyQuantityUpdated();
-        //basketpage.verifyProductCountUpdated();
+        basketpage.verifyQuantityUpdated();
+        basketpage.verifyProductCountUpdated();
 
 
     }
@@ -125,16 +125,17 @@ public class ShoppingCart {
     //New test cases
 
 //Make invoice address different to delivery address
-    /**
 
-     .Navigate to basket
-     .Click proceed to checkout
-     .Delivery Address Page is shown
-     .Make invoice address different
-     .Click continue button
-     .Verify shipping method displayed
+    /**
+     * .Navigate to basket
+     * .Click proceed to checkout
+     * .Delivery Address Page is shown
+     * .Make invoice address different
+     * .Click continue button
+     * .Verify shipping method displayed
      */
-    @Test @Ignore
+    @Test
+    @Ignore
     public void invoiceAddressDifferentToDeliveryAddress() {
         homePage.navigateToSignInPage();
         signInPage.login();
@@ -153,26 +154,29 @@ public class ShoppingCart {
         checkoutPage.checkOutAddress();
     }
 
-    //Multiple items in shopping cart displayed correctly
-    /**
-     *Navigate to basket
-     *Verify that all items are displayed
-     *Verify that product counter and prices are correct
+
+
+    /* Multiple items in shopping cart displayed correctly
+     * Navigate to basket
+     * Verify that all items are displayed
+     * Verify that product counter and prices are correct
      */
     @Test @Ignore
     public void verifyMultipleItemsInCart() {
 
     }
 
-    //Add a comment to your order
-    /**
+
+    /** Add a comment to your order
      * Navigate to basket
      * Proceed to checkout
      * Select Address
      * Write a comment in 'Shipping Method' section
      * Verify comment has been added
      */
-    /**No way to verify added comment after ordering*/
+    /**
+     * No way to verify added comment after ordering
+     */
     @Test
     public void addCommentToOrder() {
 
@@ -191,28 +195,29 @@ public class ShoppingCart {
         checkoutPage.verifyCommentAdded();
 
 
-
     }
 
-//Proceed to checkout and logout
-    /**
-     *Navigate to basket
-     *Click proceed to checkout
-     *Logout
-     *Verify cart emptied when sign back in.
+
+
+    /** Proceed to checkout and logout
+     * Navigate to basket
+     * Click proceed to checkout
+     * Logout
+     * Verify cart emptied when sign back in.
      */
     @Test
     public void checkOutandlogout() {
 
     }
 
-//Add new address
-    /**
-     *Navigate to basket
-     *Proceed to checkout
-     *Click "+ new address"
-     *Fill out address form
-     *Verify new address is created
+
+
+    /**dd new address
+     * Navigate to basket
+     * Proceed to checkout
+     * Click "+ new address"
+     * Fill out address form
+     * Verify new address is created
      */
     @Test
     public void addnewAddress() {
@@ -230,8 +235,6 @@ public class ShoppingCart {
         checkoutPage.deleteCreatedAddress();
 
     }
-
-
 
 
 }

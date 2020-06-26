@@ -15,7 +15,7 @@ public class ShoppingCartStepDef {
 
     @When("^the user clicks the \"([^\"]*)\" button$")
     public void theUserClicks(String click) {
-        switch (click){
+        switch (click) {
             case "delete":
                 basketPage.deleteItemFromBasket();
                 break;
@@ -30,7 +30,7 @@ public class ShoppingCartStepDef {
         }
     }
 
-    @When ("^user \"([^\"]*)\" quantity of product$")
+    @When("^user \"([^\"]*)\" quantity of product$")
     public void quantityOfProduct(String quantity) {
         if (quantity.equals("increases")) {
             basketPage.checkThereAreTwoItems();
@@ -39,15 +39,15 @@ public class ShoppingCartStepDef {
         }
     }
 
-    @When ("^the user hovers over a product and the clicks the add to cart button")
+    @When("^the user hovers over a product and the clicks the add to cart button")
     public void userHoversOverProduct() {
-    homepage.hoverOverItem();
-    homepage.addItemToCart();
+        homepage.hoverOverItem();
+        homepage.addItemToCart();
     }
 
     @Then("^verify the \"([^\"]*)\"$")
     public void thenVerifyThe(String verify) {
-        switch (verify){
+        switch (verify) {
             case "item is removed from the basket":
                 basketPage.checkItemRemovedFromBasket();
                 break;
@@ -65,23 +65,23 @@ public class ShoppingCartStepDef {
     }
 
     @And("^verify the Product counter is updated")
-    public void verifyTheProductCounterIsUpdated(){
+    public void verifyTheProductCounterIsUpdated() {
         basketPage.verifyProductCountUpdated();
     }
 
     @And("user has 2 items in basket")
-    public void userHasTwoItemsInTheBasket(){
+    public void userHasTwoItemsInTheBasket() {
         basketPage.checkThereAreTwoItems();
     }
 
     @And("pricing and totals should be updated")
-    public void pricingAndTotalsUpdated(){
+    public void pricingAndTotalsUpdated() {
         basketPage.checkThatBasketLogoHasTwo();
     }
 
     @And("the user is on the shopping cart page")
     public void userIsOnThePage() {
-        basketPage.goToBasket();
+        basketPage.addToCart();
     }
 
     @Given("the user already has an item in their basket")
@@ -91,5 +91,6 @@ public class ShoppingCartStepDef {
         signInPage.login();
         homepage.goTo();
         homepage.itemAddedToCart();
+
     }
 }
