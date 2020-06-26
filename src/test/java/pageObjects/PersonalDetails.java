@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.Random;
+
 public class PersonalDetails {
     private String firstName;
     private String lastName;
@@ -37,6 +39,21 @@ public class PersonalDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getEmail(String emailType) {
+        if (emailType.equals("registered")){
+            return email;
+        } else if (emailType.equals("unregistered")){
+            return generateRandomEmailAddress();
+        }
+        return null;
+    }
+
+    private String generateRandomEmailAddress() {
+        Random random = new Random();
+        int randomNumber = random.nextInt();
+        return "testSherwood" + randomNumber + randomNumber + "@nest.com";
     }
 
     public String getInvalidEmail() {

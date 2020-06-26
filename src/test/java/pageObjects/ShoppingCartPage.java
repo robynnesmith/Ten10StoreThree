@@ -13,13 +13,9 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class ShoppingCartPage extends BasePage {
 
-    public ShoppingCartPage(WebDriver driver) {
-        super(driver);
-    }
+    public HomePage homePage = new HomePage();
 
-    public HomePage homePage = new HomePage(driver);
-
-    private static final By ADD_TO_CART_BUTTON = By.cssSelector(".btn.btn-primary.add-to-cart");
+    private static final By ADD_TO_CART_BUTTON = By.cssSelector("a.btn.btn-primary");
     private static final By MODAL_CLOSE = By.cssSelector(".close");
     private static final By MODAL_BODY = By.cssSelector(".modal-body");
     private static final By CART_BUTTON = By.id("_desktop_cart");
@@ -29,10 +25,10 @@ public class ShoppingCartPage extends BasePage {
     private static final By QUANTITY_INPUT = By.cssSelector(".js-cart-line-product-quantity.form-control");
     private static final By QUANTITY_INPUT_VALUE_2 = By.cssSelector("input[value'2']");
     private static final By PRODUCT_QUANTITY_TEXT = By.cssSelector("#cart-subtotal-products span:first-child");
+    private static final By PRODUCT_QUANTITY_TEXT1 = By.xpath("//div[@id='cart-subtotal-products']/span");
     private static final By PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".checkout a");
     private static final By PERSONAL_INFORMATION_PAGE = By.id("checkout-personal-information-step");
     private static final By MODAL_PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector(".cart-content-btn>a");
-
 
     public void addToCart() {
         waitAndClick(ADD_TO_CART_BUTTON);
@@ -41,6 +37,10 @@ public class ShoppingCartPage extends BasePage {
     public void navigateToBasket() {
         waitAndClick(MODAL_CLOSE);
         waitUntilInvisible(MODAL_BODY);
+        waitAndClick(CART_BUTTON);
+    }
+
+    public void goToBasket() {
         waitAndClick(CART_BUTTON);
     }
 
@@ -61,9 +61,9 @@ public class ShoppingCartPage extends BasePage {
     public void verifyQuantityUpdated() {
         boolean textPresent = false;
         int count = 0;
-        while (!textPresent && count < 20){
+        while (!textPresent && count < 20) {
             String text = driver.findElement(PRODUCT_QUANTITY_TEXT).getText();
-            if (text.equals("2 items")){
+            if (text.equals("2 items")) {
                 textPresent = true;
             }
             count++;
@@ -88,8 +88,6 @@ public class ShoppingCartPage extends BasePage {
         Assert.assertTrue(elementIsVisible(personalInformationPage));
     }
 
-
-
     public void addItemToCart() {
         homePage.itemAddedToCart();
         navigateToBasket();
@@ -98,6 +96,18 @@ public class ShoppingCartPage extends BasePage {
 
     public void clickModalProceedToCheckout() {
         waitAndClick(MODAL_PROCEED_TO_CHECKOUT_BUTTON);
+    }
+
+    public void checkItemIsInBasket() {
+        checkTextExistsOnPage("1 item");
+    }
+
+    public void checkThereAreTwoItems() {
+        checkTextExistsOnPage("2 items");
+    }
+
+    public void checkThatBasketLogoHasTwo() {
+        checkTextExistsInElement("a", "(2)");
     }
 }
 
